@@ -1,0 +1,46 @@
+<script type="text/html" data-help-name="ui-led">
+    <h3>Configuration Options</h3>
+    <h4>General</h4>
+    <dl class="message-properties">
+        <dt class="optional">Name <span class="property-type">string</span></dt>
+        <dd>The name of the node within the context of the Node-RED editor.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Group <span class="property-type">ui-group</span></dt>
+        <dd>The UI Group that the LED will render inside.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Size <span class="property-type">&lt;int&gt;x&lt;int&gt;</span></dt>
+        <dd>The relative size of the LED with <code>width</code> x <code>height</code></dd>
+    </dl>
+    <h4>Label Styling</h4>
+    <dl class="message-properties">
+        <dt>Text <span class="property-type">string</span></dt>
+        <dd>The label to display next to the LED.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Placement <span class="property-type">left | right</span></dt>
+        <dd>Which side of the LED the label will be displayed.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Alignment <span class="property-type">left | center | right</span></dt>
+        <dd>Within the space to the left/right of the LED, how the label will be aligned in that space.</dd>
+    </dl>
+    <h4>LED Styling</h4>
+    <dl class="message-properties">
+        <dt>Shape <span class="property-type">circle | square</span></dt>
+        <dd>"Circle" or "Square"</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Show Border <span class="property-type">boolean</span></dt>
+        <dd>Should the LED have a fixed border around the shape, emulating a physical LED.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>Show Glow <span class="property-type">boolean</span></dt>
+        <dd>Should the LED have a glow effect.</dd>
+    </dl>
+    <h4>Values</h4>
+    <p>Maps a value to a respective color. If a value is provided that it doesn't recognise, a general grey color will be used.</p>
+    <h3>Dynamic Properties</h3>
+    <p>UI LED doesn't currently support any dynamic properties.</p>
+</script>
