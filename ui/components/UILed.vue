@@ -1,6 +1,6 @@
 <template>
     <div class="nrdb-ui-led" :style="`--ui-led-shadow-width: ${size * 0.1}px; --ui-led-border-width: ${size * 0.15}px; --ui-led-color: ${color}; flex-direction: ${flexDirection}`">
-        <label v-if="props.label" class="nrdb-ui-led-label v-label" :style="`justify-content: ${labelAlignment}`">{{ props.label }}</label>
+        <label v-if="props.label" class="nrdb-ui-led-label" :style="`justify-content: ${labelAlignment}`">{{ props.label }}</label>
         <span ref="led" class="nrdb-ui-led-bulb" :class="`${hasValue ? 'nrdb-ui-led-bulb-on' : ''} nrdb-ui-led-bulb--${props.shape} ${props.showGlow && hasValue ? 'nrdb-ui-led-bulb--glow' : ''} ${props.showBorder ? 'nrdb-ui-led-bulb--border' : ''}`">{{ value !== null ? value : 'No Message Received' }}</span>
     </div>
 </template>
@@ -93,6 +93,9 @@ export default {
 
 .nrdb-ui-led-label {
     flex-grow: 1;
+    font-size: 1rem;
+    color: #717171;
+    font-family: Helvetica;
 }
 
 .nrdb-ui-led-bulb {
