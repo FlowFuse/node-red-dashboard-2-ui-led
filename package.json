@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/node-red-dashboard-2-ui-led",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A simple LED status indicator for the Node-RED Dashboard 2.0",
     "keywords": [
         "node-red",
