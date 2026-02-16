@@ -26,3 +26,13 @@ jobs:
         uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3.1.1
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - name: getVersion
+        id: getVersion
+        shell: bash
+        run: |
+          VERSION=$(npm info . --json version | sed -e 's/"//g')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - uses: flowfuse/github-actions-workflows/actions/update-nr-flows@v0.49.0
+        with:
+          package: '@flowfuse/node-red-dashboard-2-ui-led'
+          version: ${{ steps.getVersion.outputs.version }}
