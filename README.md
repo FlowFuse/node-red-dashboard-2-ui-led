@@ -36,4 +36,5 @@ The `ui-led` node has the following configuration options:
 
 <img width="500" alt="Screenshot 2024-02-17 at 10 01 44" src="https://github.com/FlowFuse/node-red-dashboard-2-ui-led/assets/99246719/debe5d84-454f-43f4-82b9-a48f29b12307">
 
+- The value is a property of the message, e.g. `msg.payload` or `msg.myProperty`.
 - Maps a value to a respective color. If a value is provided that it doesn't recognise, a general grey color will be used.
