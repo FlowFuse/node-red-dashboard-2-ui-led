@@ -1,6 +1,6 @@
 {
     "name": "@mschaeffler/node-red-dashboard-2-ui-led",
-    "version": "1.2.1",
+    "version": "1.2.3",
     "description": "A simple LED status indicator for the Node-RED Dashboard 2.0",
     "keywords": [
         "node-red",
@@ -8,7 +8,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/mschaeffler/node-red-dashboard-2-ui-led.git"
+        "url": "https://github.com/m-schaeffler/node-red-dashboard-2-ui-led"
     },
     "license": "Apache-2.0",
     "author": {
