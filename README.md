@@ -13,6 +13,7 @@ The `ui-led` node has the following configuration options:
 <img width="500" alt="Screenshot 2024-02-17 at 10 02 43" src="https://github.com/FlowFuse/node-red-dashboard-2-ui-led/assets/99246719/8ed8de2a-d300-483d-a2c3-720fe296cf25">
 
 - **Name**: The name of the node within the context of the Node-RED editor.
+- **Value**: Configure how the value is determined. Can be set to use a specific message property. If not configured, defaults to `msg.payload`.
 - **Group**: The UI Group that the LED will render inside.
 - **Size**: The relative size of the LED with `width` x `height`
 
