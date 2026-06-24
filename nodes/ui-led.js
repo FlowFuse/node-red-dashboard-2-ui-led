@@ -3,6 +3,7 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config)
 
         const node = this
+        this.property = config.property || "payload";
 
         // which group are we rendering this widget
         const group = RED.nodes.getNode(config.group)
@@ -12,6 +13,9 @@ module.exports = function (RED) {
         // server-side event handlers
         const evts = {
             onInput: function (msg, send, done) {
+                // evaluate property parameter
+                msg.payload = RED.util.getMessageProperty( msg, node.property );
+
                 // store the latest value in our Node-RED datastore
                 base.stores.data.save(base, node, msg)
 

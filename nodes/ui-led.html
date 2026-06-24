@@ -47,6 +47,7 @@
         color: RED._('@flowfuse/node-red-dashboard/ui-base:ui-base.colors.medium'),
         defaults: {
             name: { value: "" },
+            property:{ value: "payload", required: true },
             group: { type: 'ui-group', required: true },
             order: { value: -1 },
             width: {
@@ -88,7 +89,7 @@
         outputs: 0,
         icon: "font-awesome/fa-lightbulb-o",
         label: function() {
-            return this.name || "ui-led";
+            return this.name || this.label || "ui-led";
         },
         oneditprepare: function () {
             $('#node-input-size').elementSizer({
@@ -117,6 +118,16 @@
                 const state = this.states[i]
                 generateStateRow(i + 1, state)
             }
+            // property
+            if( this.property === undefined )
+            {
+                $("#node-input-property").val( "payload" );
+            }
+            $("#node-input-property").typedInput({
+                type:"msg",
+                types:["msg"],
+                typeField: "#node-input-property-type"
+            })
         },
         oneditsave: function () {
             const states = $('#node-input-states-container').children()
@@ -194,6 +205,11 @@
         </div>
     </div>
     <h3>Values</h3>
+    <div class="form-row">
+        <label for="node-input-input"><i class="fa fa-ellipsis-h"></i> Value</label>
+        <input type="text" id="node-input-property">
+        <input type="hidden" id="node-input-property-type">
+    </div>
     <div class="form-row node-input-states-container-row" style="margin-bottom:0px; width:100%; min-width:520px; display: flex; flex-direction: column;">
         <label style="vertical-align:top; width: 100%;"><i class="fa fa-list-alt"></i> Colors for value of msg.payload</label>
         <div id="node-input-states-container-div" style="box-sizing:border-box; border-radius:5px; height:257px; padding:5px; border:1px solid var(--red-ui-form-input-border-color, #ccc); overflow-y:scroll; display:inline-block; width: 100%;">
