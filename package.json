@@ -1,6 +1,6 @@
 {
-    "name": "@flowfuse/node-red-dashboard-2-ui-led",
-    "version": "1.1.0",
+    "name": "@mschaeffler/node-red-dashboard-2-ui-led",
+    "version": "1.2.3",
     "description": "A simple LED status indicator for the Node-RED Dashboard 2.0",
     "keywords": [
         "node-red",
@@ -8,14 +8,19 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/FlowFuse/node-red-dashboard-2-ui-led.git"
+        "url": "https://github.com/m-schaeffler/node-red-dashboard-2-ui-led"
     },
     "license": "Apache-2.0",
     "author": {
+        "name": "Mathias Schäffler",
+        "url": "https://github.com/mschaeffler"
+    },
+    "contributors": [
+      {
         "name": "Joe Pavitt",
         "url": "https://github.com/joepavitt"
-    },
-    "contributors": [],
+      }
+    ],
     "exports": {
         "import": "./resources/ui-led.esm.js",
         "require": "./resources/ui-led.umd.js"
