@@ -38,12 +38,15 @@ export default {
                 // check which, if any, color we should be displaying
                 for (const i in this.props.evaluated) {
                     const state = this.props.evaluated[i]
-                    if (typeof (state.value) === 'object') {
-                        if (JSON.stringify(state.value) === JSON.stringify(msg.payload)) {
-                            return state.color
-                        }
-                    } else if (state.value === msg.payload) {
-                        return state.color
+                    const matched = typeof state.value === 'object'
+                        ? JSON.stringify(state.value) === JSON.stringify(msg.payload)
+                        : state.value === msg.payload
+                    if (matched) {
+                        // Fall back to gray when the matching state has no color set.
+                        // Otherwise the CSS variable becomes the literal string "undefined"
+                        // and `background-color: var(--ui-led-color)` resolves to nothing,
+                        // making the bulb effectively invisible.
+                        return state.color || 'gray'
                     }
                 }
             }

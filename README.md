@@ -36,4 +36,42 @@ The `ui-led` node has the following configuration options:
 
 <img width="500" alt="Screenshot 2024-02-17 at 10 01 44" src="https://github.com/FlowFuse/node-red-dashboard-2-ui-led/assets/99246719/debe5d84-454f-43f4-82b9-a48f29b12307">
 
-- Maps a value to a respective color. If a value is provided that it doesn't recognise, a general grey color will be used.
+- Maps a value to a respective color. If a value is provided that doesn't match any of the configured states, a general grey color is used. The same fallback applies if a matching state has been configured without a color.
+
+## JSON config (for hand-crafted flows and tooling)
+
+The editor calls this section "Values"; in the underlying node config the field is **`states`**. A typical config object looks like:
+
+```json
+{
+    "id": "97c1b0d2c8f4cb1a",
+    "type": "ui-led",
+    "group": "<ui-group-id>",
+    "order": 1,
+    "width": 1,
+    "height": 1,
+    "label": "Running",
+    "labelPlacement": "left",
+    "labelAlignment": "left",
+    "shape": "circle",
+    "showBorder": true,
+    "showGlow": true,
+    "allowColorForValueInMessage": false,
+    "states": [
+        { "value": "true",  "valueType": "bool", "color": "#28a745" },
+        { "value": "false", "valueType": "bool", "color": "#dc3545" }
+    ]
+}
+```
+
+The `states` array maps the incoming `msg.payload` to a CSS color:
+
+| Field | Meaning |
+|---|---|
+| `value` | The payload value to match against. Strings, since Node-RED's typed-input stores them that way. For `valueType: "bool"` use `"true"` / `"false"`; for `"num"` use the number as a string, e.g. `"42"`. |
+| `valueType` | The Node-RED typed-input type — typically `"bool"`, `"num"`, `"str"`, or `"json"`. Values are evaluated server-side at deploy time. |
+| `color` | Any CSS color value — hex, named, `rgb(...)`, etc. |
+
+`allowColorForValueInMessage: true` lets a flow override the color at runtime via `msg.color`.
+
+Note: the field name is `states` (the source of confusion for some users — including the FlowFuse engineering team when hand-crafting flow JSON or generating it from scripts/LLMs). It is *not* `colorForValue`.
