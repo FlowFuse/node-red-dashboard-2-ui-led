@@ -1,8 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    open-pull-requests-limit: 30
     directory: "/"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 1
+    commit-message:
+      prefix: "chore"
+      include: "scope"

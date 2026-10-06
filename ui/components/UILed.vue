@@ -8,6 +8,16 @@
 <script>
 import { mapState } from 'vuex'
 
+function normalizeBinary (val) {
+    if (val instanceof ArrayBuffer) {
+        return Array.from(new Uint8Array(val))
+    }
+    if (ArrayBuffer.isView(val)) {
+        return Array.from(new Uint8Array(val.buffer, val.byteOffset, val.byteLength))
+    }
+    return val
+}
+
 export default {
     name: 'UILed',
     inject: ['$socket'],
@@ -35,11 +45,14 @@ export default {
         color: function () {
             if (this.hasValue && this.props.evaluated) {
                 const msg = this.messages[this.id]
+                // buffers arrive client-side as ArrayBuffers, which all stringify to '{}',
+                // so normalize them to byte arrays before comparing
+                const payload = JSON.stringify(normalizeBinary(msg.payload))
                 // check which, if any, color we should be displaying
                 for (const i in this.props.evaluated) {
                     const state = this.props.evaluated[i]
                     if (typeof (state.value) === 'object') {
-                        if (JSON.stringify(state.value) === JSON.stringify(msg.payload)) {
+                        if (JSON.stringify(normalizeBinary(state.value)) === payload) {
                             return state.color
                         }
                     } else if (state.value === msg.payload) {
